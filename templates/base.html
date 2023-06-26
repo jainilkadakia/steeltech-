@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steeltech Engineers</title>
+
+    <meta name="description" content="ccm spares,fasteners,pipe fittings,general machinery,rubber teflon parts,fabrication">
+    <meta name= " keywords" content="control box, junction box , grating,panel ,flange,valves,bolt ,nut,stud ,crane wheel,tundish,spur gear,gear box,o rings,adopter plate,slide gate,mould table,housing bearing,billet,washer" >
+     
+
+ 
+<!-- fonts style -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
+<!-- Custom styles for this template -->
+
+<link href="{% static 'css/style.css' %}" rel="stylesheet" />
+
+
+<!-- responsive style -->
+<link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+ 
+
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/"><img src="{% static 'images/stlogo.jpg' %}" class = "rounded-circle" height="55px" ></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'contact' %}">Contact Us</a>
+          </li>
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+          </li> -->
+        </ul>
+        <form class="d-flex" role="search" method="post" action="{% url 'search' %}">
+          {% csrf_token %}
+          <input class="form-control me-2" type="search" id="searchproducts" placeholder="Search" aria-label="Search" name="productsearch">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!--  -->
+  
+  <div class="container text-center">
+  {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>{{message}}</strong> 
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <!-- <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li> -->
+        {% endfor %}
+        {% endif %}
+      </div>
+
+  <!--  -->
+    {% block content %}
+    {% endblock %}
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+    $( function() {
+      var availableTags = [
+      'hello'];
+
+      $.ajax({
+        method:'GET',
+        url :'/productlist',
+        success : function(response){
+            
+            startautocomplete(response)
+        }
+      });
+      function startautocomplete(availableTags){
+      $( "#searchproducts" ).autocomplete({
+        source: availableTags
+      });
+    }
+    } );
+    </script>
+
+
+
+      <!-- info section -->
+  <section class="info_section layout_padding">
+    <div class="container">
+      <!-- <div class="row">
+        <div class="col-md-3">
+          <div class="info_contact">
+           
+            <h5>
+              Contact Us
+            </h5>
+            
+              
+              <p>
+               
+                +91 1234567890
+              </p>
+            </div>
+            <div>
+              
+              <p>
+                demo@gmail.com
+              </p>
+            </div>
+          </div>
+        </div> -->
+        <div class="row">
+          <div class="col-5">
+
+          </div>
+          <div class="col-4">
+            <div class="info_contact">
+              <h5>
+                Contact Us
+              </h5>
+              <!-- <div class="col-md-3">
+                <p>
+                  demo@gmail.com
+                </p><br>
+                <p>
+                  demo@gmail.com
+                </p>
+              </div> -->
+              <p>
+                +91 9323224402/8080120212
+              </p>
+              <p>
+                steeltech4@yahoo.co.in <br>filifs@yahoo.com
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="info_links">
+           
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- end info_section -->
+
+ 
+
+
+    
+  
+</body>
+</html>

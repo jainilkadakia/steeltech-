@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br>
+<div class="row">
+<div class="col-2"></div><div class="col-4">
+
+    
+<div class="container text-center">
+      <div class="card" style="width: 18rem;">
+        <img src="{{product.prod_image.url}}" class="card-img-top" alt="product image">
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text">{{product.prod_description}}</p>
+          <a href="{% url 'home' %}" class="btn btn-primary">Back to home</a>
+        </div>
+      </div>
+    </div>
+
+</div>
+</div>
+
+<br><br>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="how_section layout_padding">
+    <div class="heading_container">
+      <h2>
+        {{cat|capfirst}}
+      </h2>
+    </div>
+    {% if product %}
+    <div class="how_container">
+      {% for p in product %}
+      
+      <a href="{% url 'product' p.id %}">
+        
+      <div class="box">
+        <div class="img-box">
+        
+          <img src="{{p.prod_image.url}}" width="270px" height="200px" >
+        </div>
+        <div class="detail-box">
+          <h5>
+            {{p.name | capfirst}}
+          </h5>
+        </a>
+          <p>
+            {{p.prod_description | capfirst}}
+          </p>
+        </div>
+      </div>
+    
+        {% endfor %}
+      
+       {% else %}
+      <div class="container text-center">
+       <a class="btn btn-primary" href="{% url 'home' %}">Home</a>
+    </div>
+       {% endif %}
+    </div>
+    
+  </section>
+
+{% endblock %}

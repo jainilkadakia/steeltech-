@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block content %}
+<br><br><br><br>
+<div class="row">
+
+<div class="col-3"></div>
+<div class="col-6">
+
+  <div class="card w-90 text-bg-dark mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Contact Us</h5>
+      <p class="card-text">
+
+        <form class="row g-3" method="post" action="{% url 'contact' %}">
+          {% csrf_token %}
+          <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" required>
+          </div>
+          <div class="col-md-6">
+            <label  class="form-label">Full name</label>
+            <input type="text" class="form-control" name="c_name" required>
+          </div>
+          <div class="col-md-6">
+            <label  class="form-label">phone number</label>
+            <input type="text" class="form-control" name="p_no" placeholder="+91XXXXXXXXXX" required>
+          </div>
+          <div class="col-md-6">
+            <label  class="form-label">Firm name/ Comapany</label>
+            <input type="text" class="form-control" name="firmname" placeholder="If no firm name enter XYZ" required>
+          </div>
+          <div class="col-12">
+            <label  class="form-label">Query</label>
+            <input type="text" class="form-control" name="query" placeholder="Enter your query" required>
+          </div>
+          <!-- <div class="col-12">
+            <label for="inputAddress2" class="form-label">Address 1</label>
+            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+          </div> -->
+          <div class="col-md-6">
+            <label for="inputCity" class="form-label">City</label>
+            <input type="text" class="form-control" name="city" required>
+          </div>
+          <div class="col-md-4">
+            <label for="inputState" class="form-label">State</label>
+            <input type="text" class="form-control" name="state">
+          </div>
+          <div class="col-md-2">
+            <label for="inputZip" class="form-label">Pin Code</label>
+            <input type="text" class="form-control" id="inputZip" name="pincode" >
+          </div>
+          <div class="col-12">
+            
+          </div>
+          <div class="col-12 text-center ">
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+
+
+      </p>
+      
+    </div>
+  </div>
+    
+    
+</div>
+</div>
+{% endblock %}
